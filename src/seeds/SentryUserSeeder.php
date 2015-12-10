@@ -14,16 +14,16 @@ class SentryUserSeeder extends Seeder
         DB::table('users')->delete();
 
         Sentry::getUserProvider()->create(array(
-            'email'    => 'admin@admin.com',
-            'username' => 'admin',
-            'password' => 'sentryadmin',
+            'email'    => 'pentadbir.sistem@adk.gov.my',
+            'username' => '987654321000',
+            'password' => 'pentadbir',
             'activated' => 1,
         ));
 
         Sentry::getUserProvider()->create(array(
-            'email'    => 'user@user.com',
-            'username' => '',
-            'password' => 'sentryuser',
+            'email'    => 'iskandar_ali@adk.gov.my',
+            'username' => '840426105347',
+            'password' => '12345678',
             'activated' => 1,
         ));
     }

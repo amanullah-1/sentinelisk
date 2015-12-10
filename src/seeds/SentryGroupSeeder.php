@@ -14,17 +14,17 @@ class SentryGroupSeeder extends Seeder
         DB::table('groups')->delete();
 
         Sentry::getGroupProvider()->create(array(
-            'name'        => 'Users',
+            'name'        => 'Pengguna',
             'permissions' => array(
-                'admin' => 0,
-                'users' => 1,
+                'pentadbir' => 0,
+                'pengguna' => 1,
             )));
 
         Sentry::getGroupProvider()->create(array(
-            'name'        => 'Admins',
+            'name'        => 'Pentadbir',
             'permissions' => array(
-                'admin' => 1,
-                'users' => 1,
+                'pentadbir' => 1,
+                'pengguna' => 1,
             )));
     }
 }
