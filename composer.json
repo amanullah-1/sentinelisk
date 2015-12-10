@@ -1,13 +1,13 @@
 {
-    "name": "rydurham/sentinel",
+    "name": "usap/sentinelisk",
     "description": "An implementation of the Sentry User Manager for Laravel.",
-    "keywords": ["laravel", "sentry", "auth"],
+    "keywords": ["laravel", "sentry", "auth", "sentinel"],
     "license": "BSD-3-Clause",
     "authors": [
         {
-            "name": "Ryan Durham",
-            "email": "ryan@stagerightlabs.com",
-            "homepage": "http://stagerightlabs.com"
+            "name": "Iskandar Ali",
+            "email": "miskandarmali@gmail.com",
+            "homepage": "http://iskandarali.com"
         }
     ],
     "require": {
