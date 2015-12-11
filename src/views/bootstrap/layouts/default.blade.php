@@ -8,9 +8,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet" type="text/css">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<!-- Main CSS -->
-	<link rel="stylesheet" href="{{ asset('packages/rydurham/sentinel/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/usap/sentinelisk/css/bootstrap.min.css') }}">
 	<!-- Theme CSS -->
-	<link rel="stylesheet" href="{{ asset('packages/rydurham/sentinel/css/bootstrap-theme.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/usap/sentinelisk/css/bootstrap-theme.min.css') }}">
 	<style type="text/css">
 		html {
 			position: relative;
@@ -102,65 +102,32 @@
     <![endif]-->	
 </head>
 <body>
-		
-
-		<!-- Navbar -->
-		<div class="navbar navbar-inverse navbar-fixed-top">
-	      <div class="container">
-	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	          <a class="navbar-brand" href="{{ route('home') }}">APDA</a>
-	        </div>
-	        <div class="collapse navbar-collapse">
-	          <ul class="nav navbar-nav">
-				@if (Sentry::check() && Sentry::getUser()->hasAccess('admin'))
-					<li {!! (Request::is('users*') ? 'class="active"' : '') !!}><a href="{{ action('\\Sentinel\Controllers\UserController@index') }}">Users</a></li>
-					<li {!! (Request::is('groups*') ? 'class="active"' : '') !!}><a href="{{ action('\\Sentinel\Controllers\GroupController@index') }}">Groups</a></li>
-				@endif
-	          </ul>
-	          <ul class="nav navbar-nav navbar-right">
-	            @if (Sentry::check())
-				<li {!! (Request::is('profile') ? 'class="active"' : '') !!}><a href="{{ route('sentinel.profile.show') }}">{{ Sentry::getUser()->email }}</a>
-				</li>
-				<li>
-					<a href="{{ route('sentinel.logout') }}">Logout</a>
-				</li>
-				@else
-				<li {!! (Request::is('login') ? 'class="active"' : '') !!}><a href="{{ route('sentinel.login') }}">Login</a></li>
-				<li {!! (Request::is('users/create') ? 'class="active"' : '') !!}><a href="{{ route('sentinel.register.form') }}">Register</a></li>
-				@endif
-	          </ul>
-	        </div><!--/.nav-collapse -->
-	      </div>
-	    </div>
-		<!-- ./ navbar -->
-
-		<!-- Container -->
-		<div class="container">
-			<!-- Notifications -->
-			@include('Sentinel::layouts/notifications')
-			<!-- ./ notifications -->
-
-			<!-- Content -->
-			@yield('content')
-			<!-- ./ content -->
-		</div>
-		<!-- ./ container -->
-		<footer class="footer">
-	        <div class="container">
-	            <p class="copyright pull-left" style="margin-bottom:0px;">&copy; {{ date('Y') }} Hakcipta Terpelihara APDA | <a href="http://www.adk.gov.my/" target="_blank" style="color: #BC5451; text-decoration: none;">Agensi Antidadah Kebangsaan</a></p>
-	        </div>
-	    </footer><!--//footer-->
+	<!-- Navbar -->
+	@include('Sentinel::layouts/navbar')
+	<!-- ./ navbar -->
+	<!-- Container -->
+	<div class="container">
+		<!-- Notifications -->
+		@include('Sentinel::layouts/notifications')
+		<!-- ./ notifications -->
+		<!-- Content -->
+		@yield('content')
+		<!-- ./ content -->
+	</div>
+	<!-- ./ container -->
+	<!-- Footer -->
+	<footer class="footer">
+	    <div class="container">
+	    	<p class="copyright pull-left" style="margin-bottom:0px;">&copy; {{ date('Y') }} Hakcipta Terpelihara APDA</p>
+	   	</div>
+	</footer>
+	<!--./ footer-->
 
 		<!-- Javascripts
 		================================================== -->
-		<script src="{{ asset('packages/rydurham/sentinel/js/jquery-2.1.3.min.js') }}"></script>
-		<script src="{{ asset('packages/rydurham/sentinel/js/bootstrap.min.js') }}"></script>
-		<script src="{{ asset('packages/rydurham/sentinel/js/restfulizer.js') }}"></script> 
+		<script src="{{ asset('assets/usap/sentinelisk/js/jquery-2.1.4.min.js') }}"></script>
+		<script src="{{ asset('assets/usap/sentinelisk/js/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('assets/usap/sentinelisk/js/restfulizer.js') }}"></script> 
 		<!-- Thanks to Zizaco for the Restfulizer script.  http://zizaco.net  -->
 	</body>
 </html>

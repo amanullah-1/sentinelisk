@@ -257,7 +257,7 @@ class SentinelPublishCommand extends Command
     {
         // Prepare for copying files
         $source      = $this->packagePath . '/../../public/' . $theme;
-        $destination = $this->appPath . '/../public/packages/rydurham/sentinel';
+        $destination = $this->appPath . '/../public/assets/usap/sentinelisk';
 
         // If there are already assets published, confirm that we want to overwrite.
         if ($this->file->isDirectory($destination)) {
