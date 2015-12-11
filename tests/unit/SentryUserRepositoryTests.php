@@ -54,7 +54,7 @@ class SentryUserRepositoryTests extends SentinelTestCase
         ]);
 
         // Grab the "Users" group object for assertions
-        $usersGroup = Sentry::findGroupByName('Users');
+        $usersGroup = Sentry::findGroupByName('Pengguna');
 
         // Assertions
         $this->assertInstanceOf('Sentinel\Models\User', $result->getPayload()['user']);

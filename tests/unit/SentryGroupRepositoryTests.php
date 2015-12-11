@@ -38,7 +38,7 @@ class SentryGroupRepositoryTests extends SentinelTestCase
     {
         // This is the code we are testing
         $result = $this->repo->store([
-            'name' => 'Prozorovs',
+            'name' => 'Pengguna',
             'permissions' => ['family' => 1, 'admin' => 0]
         ]);
 
@@ -48,8 +48,8 @@ class SentryGroupRepositoryTests extends SentinelTestCase
         $this->assertArrayHasKey('family', $result->getPayload()['group']->getPermissions());
         $this->assertArrayNotHasKey('admin', $result->getPayload()['group']->getPermissions());
 
-        $group = \DB::table('groups')->where('name', 'Prozorovs')->first();
-        $this->assertEquals('Prozorovs', $group->name);
+        $group = \DB::table('groups')->where('name', 'Pengguna')->first();
+        $this->assertEquals('Pengguna', $group->name);
     }
 
     public function testUpdatingGroup()
