@@ -11,7 +11,6 @@
 	<link rel="stylesheet" href="{{ asset('assets/usap/sentinelisk/css/bootstrap.min.css') }}">
 	<!-- /. main css -->
 	<!-- theme css -->
-	<link rel="stylesheet" href="{{ asset('assets/usap/sentinelisk/css/bootstrap-theme.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/usap/sentinelisk/css/app.css') }}">
 	<!-- /. theme css -->
 	<!--  css -->

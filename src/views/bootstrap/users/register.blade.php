@@ -12,7 +12,7 @@ Register
             <h2>Register New Account</h2>
 
             <div class="form-group {{ ($errors->has('username')) ? 'has-error' : '' }}">
-                <input class="form-control" placeholder="Username" name="username" type="text" value="{{ Input::old('username') }}">
+                <input class="form-control" placeholder="No. MyKad" name="username" type="text" value="{{ Input::old('username') }}">
                 {{ ($errors->has('username') ? $errors->first('username') : '') }}
             </div>
 

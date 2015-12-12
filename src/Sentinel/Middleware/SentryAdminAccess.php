@@ -28,7 +28,7 @@ class SentryAdminAccess
         }
 
         // Now check to see if the current user has the 'admin' permission
-        if (!Sentry::getUser()->hasAccess('admin')) {
+        if (!Sentry::getUser()->hasAccess('pentadbir')) {
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
