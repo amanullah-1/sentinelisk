@@ -26,6 +26,9 @@ Route::group(['namespace' => 'Sentinel\Controllers'], function () {
     Route::get('reset/{hash}/{code}', ['as' => 'sentinel.reset.form', 'uses' => 'RegistrationController@passwordResetForm']);
     Route::post('reset/{hash}/{code}', ['as' => 'sentinel.reset.password', 'uses' => 'RegistrationController@resetPassword']);
 
+
+    Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@show']);
+
     // Sentinel Profile
     Route::get('profile', ['as' => 'sentinel.profile.show', 'uses' => 'ProfileController@show']);
     Route::get('profile/edit', ['as' => 'sentinel.profile.edit', 'uses' => 'ProfileController@edit']);
