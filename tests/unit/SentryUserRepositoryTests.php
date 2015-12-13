@@ -77,8 +77,7 @@ class SentryUserRepositoryTests extends SentinelTestCase
     {
         // This is the code we are testing
         $result = $this->repo->store([
-            'first_name' => 'Andrei',
-            'last_name'  => 'Prozorov',
+            'nama' => 'Andrei',
             'username'   => 'theviolinist',
             'email'      => 'andrei@prozorov.net',
             'password'   => 'natasha',
@@ -92,8 +91,7 @@ class SentryUserRepositoryTests extends SentinelTestCase
         $testUser = DB::table('users')
             ->where('username', 'theviolinist')
             ->where('email', 'andrei@prozorov.net')
-            ->where('first_name', 'Andrei')
-            ->where('last_name', 'Prozorov')
+            ->where('nama', 'Andrei')
             ->where('activated', 1)
             ->first();
         $this->assertEquals('andrei@prozorov.net', $testUser->email);

@@ -7,7 +7,11 @@
 @stop
 
 @section('content')
-<h1>Assalamualaikum & Selamat Datang</h1>
+<div class="jumbotron">
+	<div class="container">
+		<h1>SELAMAT DATANG</h1>
+	</div>
+</div>
 @stop
 
 @section('js')

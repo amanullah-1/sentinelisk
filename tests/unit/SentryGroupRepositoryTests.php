@@ -38,7 +38,7 @@ class SentryGroupRepositoryTests extends SentinelTestCase
     {
         // This is the code we are testing
         $result = $this->repo->store([
-            'name' => 'Pengguna',
+            'name' => 'Prozorovs',
             'permissions' => ['family' => 1, 'admin' => 0]
         ]);
 
@@ -48,14 +48,14 @@ class SentryGroupRepositoryTests extends SentinelTestCase
         $this->assertArrayHasKey('family', $result->getPayload()['group']->getPermissions());
         $this->assertArrayNotHasKey('admin', $result->getPayload()['group']->getPermissions());
 
-        $group = \DB::table('groups')->where('name', 'Pengguna')->first();
-        $this->assertEquals('Pengguna', $group->name);
+        $group = \DB::table('groups')->where('name', 'Prozorovs')->first();
+        $this->assertEquals('Prozorovs', $group->name);
     }
 
     public function testUpdatingGroup()
     {
         // Find the group we will edit
-        $group = Sentry::findGroupByName('Users');
+        $group = Sentry::findGroupByName('Pengguna');
 
         // This is the code we are testing
         $result = $this->repo->update([
@@ -74,27 +74,27 @@ class SentryGroupRepositoryTests extends SentinelTestCase
     public function testDestroyGroup()
     {
         // Find the group we will remove from storage
-        $group = Sentry::findGroupByName('Users');
+        $group = Sentry::findGroupByName('Pengguna');
 
         // This is the code we are testing
         $result = $this->repo->destroy($group->id);
 
         // Assertions
         $this->assertTrue($result->isSuccessful());
-        $this->assertFalse(\DB::table('groups')->where('name', 'Users')->count() > 0);
+        $this->assertFalse(\DB::table('groups')->where('name', 'Pengguna')->count() > 0);
     }
 
     public function testRetrieveGroupById()
     {
         // Find the group we will use for reference
-        $reference = Sentry::findGroupByName('Users');
+        $reference = Sentry::findGroupByName('Pengguna');
 
         // This is the code we are testing
         $group = $this->repo->retrieveById($reference->id);
 
         // Assertions
         $this->assertInstanceOf('Sentinel\Models\Group', $group);
-        $this->assertEquals('Users', $group->name);
+        $this->assertEquals('Pengguna', $group->name);
     }
 
     public function testRetrieveGroupByName()

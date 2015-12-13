@@ -6,7 +6,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="{{ route('home') }}">APDA</a>
+	          <a class="navbar-brand" href="{{ route('home') }}"><strong><span style="color:#d9534f;">AP</span><span style="color:#337ab7;">DA</strong></a>
 	        </div>
 	        <div class="collapse navbar-collapse">
 	          	<ul class="nav navbar-nav">
