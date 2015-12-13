@@ -118,7 +118,7 @@ return [
     */
 
     'routing' => [
-        'session_store'                     => ['route' => 'home'],
+        'session_store'                     => ['route' => 'dashboard'],
         'session_destroy'                   => ['action' => '\\Sentinel\Controllers\SessionController@create'],
         'registration_complete'           => ['route' => 'home'],
         'registration_activated'       => ['route' => 'home'],
@@ -154,7 +154,7 @@ return [
     |
     */
 
-    'redirect_if_authenticated' => 'home',
+    'redirect_if_authenticated' => 'dashboard',
 
     /*
     |--------------------------------------------------------------------------
