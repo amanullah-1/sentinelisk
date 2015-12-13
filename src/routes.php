@@ -35,28 +35,29 @@ Route::group(['namespace' => 'Sentinel\Controllers'], function () {
     Route::put('profile', ['as' => 'sentinel.profile.update', 'uses' => 'ProfileController@update']);
     Route::post('profile/password', ['as' => 'sentinel.profile.password', 'uses' => 'ProfileController@changePassword']);
 
-    // Sentinel Users
-    Route::get('users', ['as' => 'sentinel.users.index', 'uses' => 'UserController@index']);
-    Route::get('users/create', ['as' => 'sentinel.users.create', 'uses' => 'UserController@create']);
-    Route::post('users', ['as' => 'sentinel.users.store', 'uses' => 'UserController@store']);
-    Route::get('users/{hash}', ['as' => 'sentinel.users.show', 'uses' => 'UserController@show']);
-    Route::get('users/{hash}/edit', ['as' => 'sentinel.users.edit', 'uses' => 'UserController@edit']);
-    Route::post('users/{hash}/password', ['as' => 'sentinel.password.change', 'uses' => 'UserController@changePassword']);
-    Route::post('users/{hash}/memberships', ['as' => 'sentinel.users.memberships', 'uses' => 'UserController@updateGroupMemberships']);
-    Route::put('users/{hash}', ['as' => 'sentinel.users.update', 'uses' => 'UserController@update']);
-    Route::delete('users/{hash}', ['as' => 'sentinel.users.destroy', 'uses' => 'UserController@destroy']);
-    Route::get('users/{hash}/suspend', ['as' => 'sentinel.users.suspend', 'uses' => 'UserController@suspend']);
-    Route::get('users/{hash}/unsuspend', ['as' => 'sentinel.users.unsuspend', 'uses' => 'UserController@unsuspend']);
-    Route::get('users/{hash}/ban', ['as' => 'sentinel.users.ban', 'uses' => 'UserController@ban']);
-    Route::get('users/{hash}/unban', ['as' => 'sentinel.users.unban', 'uses' => 'UserController@unban']);
+    Route::group(['prefix' => 'pentadbir'], function() {
+        // Sentinel Users
+        Route::get('users', ['as' => 'sentinel.users.index', 'uses' => 'UserController@index']);
+        Route::get('users/create', ['as' => 'sentinel.users.create', 'uses' => 'UserController@create']);
+        Route::post('users', ['as' => 'sentinel.users.store', 'uses' => 'UserController@store']);
+        Route::get('users/{hash}', ['as' => 'sentinel.users.show', 'uses' => 'UserController@show']);
+        Route::get('users/{hash}/edit', ['as' => 'sentinel.users.edit', 'uses' => 'UserController@edit']);
+        Route::post('users/{hash}/password', ['as' => 'sentinel.password.change', 'uses' => 'UserController@changePassword']);
+        Route::post('users/{hash}/memberships', ['as' => 'sentinel.users.memberships', 'uses' => 'UserController@updateGroupMemberships']);
+        Route::put('users/{hash}', ['as' => 'sentinel.users.update', 'uses' => 'UserController@update']);
+        Route::delete('users/{hash}', ['as' => 'sentinel.users.destroy', 'uses' => 'UserController@destroy']);
+        Route::get('users/{hash}/suspend', ['as' => 'sentinel.users.suspend', 'uses' => 'UserController@suspend']);
+        Route::get('users/{hash}/unsuspend', ['as' => 'sentinel.users.unsuspend', 'uses' => 'UserController@unsuspend']);
+        Route::get('users/{hash}/ban', ['as' => 'sentinel.users.ban', 'uses' => 'UserController@ban']);
+        Route::get('users/{hash}/unban', ['as' => 'sentinel.users.unban', 'uses' => 'UserController@unban']);
 
-    // Sentinel Groups
-    Route::get('groups', ['as' => 'sentinel.groups.index', 'uses' => 'GroupController@index']);
-    Route::get('groups/create', ['as' => 'sentinel.groups.create', 'uses' => 'GroupController@create']);
-    Route::post('groups', ['as' => 'sentinel.groups.store', 'uses' => 'GroupController@store']);
-    Route::get('groups/{hash}', ['as' => 'sentinel.groups.show', 'uses' => 'GroupController@show']);
-    Route::get('groups/{hash}/edit', ['as' => 'sentinel.groups.edit', 'uses' => 'GroupController@edit']);
-    Route::put('groups/{hash}', ['as' => 'sentinel.groups.update', 'uses' => 'GroupController@update']);
-    Route::delete('groups/{hash}', ['as' => 'sentinel.groups.destroy', 'uses' => 'GroupController@destroy']);
-
+        // Sentinel Groups
+        Route::get('groups', ['as' => 'sentinel.groups.index', 'uses' => 'GroupController@index']);
+        Route::get('groups/create', ['as' => 'sentinel.groups.create', 'uses' => 'GroupController@create']);
+        Route::post('groups', ['as' => 'sentinel.groups.store', 'uses' => 'GroupController@store']);
+        Route::get('groups/{hash}', ['as' => 'sentinel.groups.show', 'uses' => 'GroupController@show']);
+        Route::get('groups/{hash}/edit', ['as' => 'sentinel.groups.edit', 'uses' => 'GroupController@edit']);
+        Route::put('groups/{hash}', ['as' => 'sentinel.groups.update', 'uses' => 'GroupController@update']);
+        Route::delete('groups/{hash}', ['as' => 'sentinel.groups.destroy', 'uses' => 'GroupController@destroy']);
+    });
 });

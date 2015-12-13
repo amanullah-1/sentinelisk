@@ -67,7 +67,7 @@ Edit Profile
 </div>
 @endif
 
-@if (Sentry::getUser()->hasAccess('admin') && ($user->hash != Sentry::getUser()->hash))
+@if (Sentry::getUser()->hasAccess('pentadbir') && ($user->hash != Sentry::getUser()->hash))
 <div class="row">
     <h4>Group Memberships</h4>
     <div class="well">

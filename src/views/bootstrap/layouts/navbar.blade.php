@@ -11,7 +11,7 @@
 	        <div class="collapse navbar-collapse">
 	          	<ul class="nav navbar-nav">
 					@if (Sentry::check())
-						<li><a href="#">Dashboard</a></li>
+						<li {!! (Request::is('dashboard*') ? 'class="active"' : '') !!}><a href="{{ route('dashboard') }}">Dashboard</a></li>
 					@endif	          		
 					@if (Sentry::check() && Sentry::getUser()->hasAccess('pentadbir'))
 						<li class="dropdown {{ (Request::is('pentadbir*') ? 'active' : '') }}">
@@ -31,7 +31,7 @@
 	          <ul class="nav navbar-nav navbar-right">
 	            @if (Sentry::check())
 	            <li class="dropdown">
-	            	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Sentry::getUser()->nama }} <span class="caret"></span></a>
+	            	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding-top: 10px; padding-bottom: 10px;">{{ Sentry::getUser()->nama }} &nbsp;<img src="{{ Sentry::getUser()->gravatar }}" class="profile-image img-circle" height="30px" style="1px solid #ddd" /></a>
 	            	<ul class="dropdown-menu" role="menu">
 	            		<li>
 	            			<a href="{{ route('sentinel.profile.show') }}">Profil</a></li>

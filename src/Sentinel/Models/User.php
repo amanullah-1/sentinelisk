@@ -79,4 +79,20 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User implements UserContract
     {
         return Hashids::encode($this->attributes['id']);
     }
+
+    public function getGravatarAttribute($d = 'mm', $s = 300, $r = 'g', $img = false, $atts = array() ) 
+    {
+       $url = 'http://www.gravatar.com/avatar/';
+       $url .= md5( strtolower( trim( $this->attributes['email'] ) ) );
+       $url .= "?s=$s&d=mm&r=$r";
+       if ( $img ) 
+       {
+            $url = '<img src="' . $url . '"';
+            foreach ( $atts as $key => $val )
+            $url .= ' ' . $key . '="' . $val . '"';
+            $url .= ' />';
+        }
+        
+        return $url;
+    }
 }
