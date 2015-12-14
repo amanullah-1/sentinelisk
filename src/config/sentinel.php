@@ -75,7 +75,7 @@ return [
     */
 
     'additional_user_fields' => [
-        'nama' => 'alpha_spaces'
+        'nama' => 'alpha_spaces|required'
     ],
 
     /*

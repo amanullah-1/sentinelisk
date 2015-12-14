@@ -211,7 +211,7 @@ class UserController extends BaseController
         $user = $this->userRepository->getUser();
 
         // Change the User's password
-        $result = ($user->hasAccess('admin') ? $this->userRepository->changePasswordWithoutCheck($data) : $this->userRepository->changePassword($data));
+        $result = ($user->hasAccess('pentadbir') ? $this->userRepository->changePasswordWithoutCheck($data) : $this->userRepository->changePassword($data));
 
         // Was the change successful?
         if (!$result->isSuccessful()) {
