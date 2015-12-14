@@ -1,58 +1,73 @@
 @extends(config('sentinel.layout'))
 
-{{-- Web site Title --}}
-@section('title')
-    @parent
-    Users
-@stop
+@section('title', 'Senarai Pengguna')
 
-{{-- Content --}}
 @section('content')
-    <div class="row">
-        <div class='page-header'>
-            <div class='btn-toolbar pull-right'>
-                <div class='btn-group'>
-                    <a class='btn btn-primary' href="{{ route('sentinel.users.create') }}">Create User</a>
-                </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    Senarai Pengguna
+                    <div class='btn-toolbar pull-right'>
+                        <div class='btn-group'>
+                            <a class='btn btn-primary' href="{{ route('sentinel.users.create') }}">Create User</a>
+                        </div>
+                    </div>
+                </div>                
             </div>
-            <h1>Current Users</h1>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <th>Nama</th>
+                        <th>Email</th>
+                        <th>Jenis Pengguna</th>
+                        <th>Status</th>
+                        <th>Options</th>
+                        </thead>
+                        <tbody>
+                        @foreach ($users as $user)
+                            <tr>
+                                <td>{{ $user->nama }}</td>
+                                <td><a href="{{ route('sentinel.users.show', array($user->hash)) }}">{{ $user->email }}</a></td>
+                                <?php 
+                                    $userGroups = $user->getGroups(); 
+                                ?>
+                                <td>
+                                    <ul class="list-inline">
+                                    @if (count($userGroups) >= 1)
+                                        @foreach ($userGroups as $group)
+                                            <li>{{ $group['name'] }}</li>
+                                        @endforeach
+                                    @else 
+                                        <li>No Group Memberships.</li>
+                                    @endif
+                                    </ul>
+                                </td>
+                                <td>@if($user->status === 'Active')Aktif @else Tidak-aktif @endif </td>
+                                <td>
+                                    <button class="btn btn-default" type="button" onClick="location.href='{{ route('sentinel.users.edit', array($user->hash)) }}'">Edit</button>
+                                    @if ($user->status != 'Suspended')
+                                        <button class="btn btn-default" type="button" onClick="location.href='{{ route('sentinel.users.suspend', array($user->hash)) }}'">Suspend</button>
+                                    @else
+                                        <button class="btn btn-default" type="button" onClick="location.href='{{ route('sentinel.users.unsuspend', array($user->hash)) }}'">Un-Suspend</button>
+                                    @endif
+                                    @if ($user->status != 'Banned')
+                                        <button class="btn btn-default" type="button" onClick="location.href='{{ route('sentinel.users.ban', array($user->hash)) }}'">Ban</button>
+                                    @else
+                                        <button class="btn btn-default" type="button" onClick="location.href='{{ route('sentinel.users.unban', array($user->hash)) }}'">Un-Ban</button>
+                                    @endif
+                                    <button class="btn btn-default action_confirm" href="{{ route('sentinel.users.destroy', array($user->hash)) }}" data-token="{{ Session::getToken() }}" data-method="delete">Delete</button>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                {!! $users->render() !!}
+            </div>
         </div>
     </div>
-
-    <div class="row">
-        <div class="table-responsive">
-            <table class="table table-striped table-hover">
-                <thead>
-                <th>User</th>
-                <th>Status</th>
-                <th>Options</th>
-                </thead>
-                <tbody>
-                @foreach ($users as $user)
-                    <tr>
-                        <td><a href="{{ route('sentinel.users.show', array($user->hash)) }}">{{ $user->email }}</a></td>
-                        <td>{{ $user->status }} </td>
-                        <td>
-                            <button class="btn btn-default" type="button" onClick="location.href='{{ route('sentinel.users.edit', array($user->hash)) }}'">Edit</button>
-                            @if ($user->status != 'Suspended')
-                                <button class="btn btn-default" type="button" onClick="location.href='{{ route('sentinel.users.suspend', array($user->hash)) }}'">Suspend</button>
-                            @else
-                                <button class="btn btn-default" type="button" onClick="location.href='{{ route('sentinel.users.unsuspend', array($user->hash)) }}'">Un-Suspend</button>
-                            @endif
-                            @if ($user->status != 'Banned')
-                                <button class="btn btn-default" type="button" onClick="location.href='{{ route('sentinel.users.ban', array($user->hash)) }}'">Ban</button>
-                            @else
-                                <button class="btn btn-default" type="button" onClick="location.href='{{ route('sentinel.users.unban', array($user->hash)) }}'">Un-Ban</button>
-                            @endif
-                            <button class="btn btn-default action_confirm" href="{{ route('sentinel.users.destroy', array($user->hash)) }}" data-token="{{ Session::getToken() }}" data-method="delete">Delete</button>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="row">
-        {!! $users->render() !!}
-    </div>
+</div>
 @stop

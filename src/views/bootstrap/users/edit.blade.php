@@ -25,6 +25,11 @@ Edit Profile
 ?>
 
 <div class="row">
+    @if (is_null($user->nama))
+    <div class="alert alert-info">
+        <strong>Perhatian:</strong> Sila lengkapkan profil anda
+    </div>
+    @endif
     <div class='page-header'>
         <h1>
             Edit
