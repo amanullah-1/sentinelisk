@@ -1,24 +1,22 @@
-## Sentinel: Sentry Implementation for Laravel 
+## Sentinelisk:
 
-[![Build Status](https://travis-ci.org/rydurham/Sentinel.svg?branch=master)](https://travis-ci.org/rydurham/Sentinel)
-[![Total Downloads](https://poser.pugx.org/rydurham/sentinel/d/total.svg)](https://packagist.org/packages/rydurham/sentinel)
-[![License](https://poser.pugx.org/rydurham/sentinel/license.svg)](https://packagist.org/packages/rydurham/sentinel)
+[![Build Status](https://travis-ci.org/usap/sentinelisk.svg?branch=master)](https://travis-ci.org/usap/sentinelisk)
+[![Total Downloads](https://poser.pugx.org/usap/sentinelisk/d/total.svg)](https://packagist.org/packages/usap/sentinelisk)
+[![License](https://poser.pugx.org/usap/sentinelisk/license.svg)](https://packagist.org/packages/usap/sentinelisk)
 
 This package provides an implementation of  [Sentry 2](https://github.com/cartalyst/sentry) for [Laravel](https://github.com/laravel/laravel). By default it uses [Bootstrap 3.0](http://getbootstrap.com), but you can make use of whatever UI you want.  It is intended to be a very simple way to get up and running with User access control very quickly.  For simple projects you shouldn't need to do much more than drop it in and dial in the configuration.
 
 Make sure you use the version most appropriate for the type of Laravel application you have: 
 
-| Laravel Version  | Sentinel Version  | Packagist Branch |
+| Laravel Version  | Sentinelisk Version  | Packagist Branch |
 |---|---|---|
-| 4.2.*  | 1.4.*  | ```"rydurham/sentinel": "~1.4"``` |
-| 5.0.*  | 2.0.*  | ```"rydurham/sentinel": "~2"```   |
-| 5.1.*  | 2.2.*  | ```"rydurham/sentinel": "~2.2"``` |
+| 5.1.*  | 1.1.*  | ```"usap/sentinelisk": "~1.1"``` |
 
 ### Laravel 5 Instructions
 **Install the Package Via Composer:**
 
 ```shell
-$ composer require rydurham/sentinel
+$ composer require usap/sentinelisk
 ```
 
 Make sure you have configured your application's Database and Mail settings. 
@@ -52,7 +50,7 @@ php artisan sentinel:publish
 
 You can specify a "theme" option to publish the views and assets for a specific theme:  
 ```shell
-php artisan sentinel:publish --theme="foundation"
+php artisan sentinel:publish --theme="bootstrap"
 ```
 Run ```php artisan sentinel:publish --list``` to see the currently available themes.
 
@@ -76,10 +74,9 @@ More details about the default usernames and passwords can be [found here](https
 Sentinel requires that you have a route named 'home' in your ```routes.php``` file: 
 ```php
 // app/routes.php
- Route::get('/', array('as' => 'home', function()
-{
-    return View::make('home');
-}));
+Route::get('/', ['middleware' => 'sentry.guest','as' => 'home', function () {
+    return view('sentinel.utama');
+}]);
 ```
 
 ### Basic Usage
@@ -115,13 +112,8 @@ This package is intended for simple sites but it is possible to integrate into a
 It is not advisable to extend the Sentinel controller classes; you will be better off in the long run creating your own controllers from scratch. 
 
 ### Documentation & Questions
-Check the [Wiki](https://github.com/rydurham/Sentinel/wiki) for more information about the package:
+Check the [Wiki](https://github.com/usap/sentinelisk/wiki) for more information about the package:
 * Config Options
 * Events & Listeners
 * Seed & Migration Details
 * Default Routes
-
-Any questions about this package should be posted [on the package website](http://www.ryandurham.com/projects/sentinel/).
-
-### Localization
-Sentinel has been translated into several other languages, and new translations are always welcome! Check out the [Sentinel Page](https://crowdin.com/project/sentinel) on CrowdIn for more details.
