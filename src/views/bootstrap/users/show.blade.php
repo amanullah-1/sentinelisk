@@ -5,7 +5,7 @@
 @section('content')
 
     <?php
-    	\Carbon\Carbon::setLocale('my');
+    	\Carbon\Carbon::setLocale('ms');
         // Determine the edit profile route
         if (($user->email == Sentry::getUser()->email)) {
             $editAction = route('sentinel.profile.edit');

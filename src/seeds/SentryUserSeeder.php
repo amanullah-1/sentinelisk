@@ -16,7 +16,7 @@ class SentryUserSeeder extends Seeder
         Sentry::getUserProvider()->create(array(
             'email'    => 'pentadbir.sistem@adk.gov.my',
             'username' => '987654321000',
-            'password' => 'pentadbir',
+            'password' => 'pentadbir123',
             'activated' => 1,
         ));
 
