@@ -34,7 +34,11 @@
 	            	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="padding-top: 10px; padding-bottom: 10px;">{{ Sentry::getUser()->nama }} &nbsp;<img src="{{ Sentry::getUser()->gravatar }}" class="profile-image img-circle" height="30px" style="1px solid #ddd" /></a>
 	            	<ul class="dropdown-menu" role="menu">
 	            		<li>
-	            			<a href="{{ route('sentinel.profile.show') }}">Profil</a></li>
+	            			<a href="{{ route('sentinel.profile.show') }}">Profil</a>
+	            		</li>
+	            		<li>
+	            			<a href="{{ route('sentinel.tetapan.akaun') }}">Tetapan</a>
+	            			</li>
 	            		<li class="divider"></li>
 	            		<li>
 							<a href="{{ route('sentinel.logout') }}">Log Keluar</a>

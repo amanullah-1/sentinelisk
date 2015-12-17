@@ -90,6 +90,15 @@ class ProfileController extends BaseController
         return $this->redirectViaResponse('profile_update', $result);
     }
 
+    public function showPassword()
+    {
+        $user = $this->userRepository->getUser();
+
+        return $this->viewFinder('Sentinel::tetapan.katalaluan', [
+            'user' => $user
+        ]);
+    }
+
     /**
      * Process a password change request
      *

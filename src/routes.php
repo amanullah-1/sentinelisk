@@ -31,9 +31,12 @@ Route::group(['namespace' => 'Sentinel\Controllers'], function () {
 
     // Sentinel Profile
     Route::get('profile', ['as' => 'sentinel.profile.show', 'uses' => 'ProfileController@show']);
-    Route::get('profile/edit', ['as' => 'sentinel.profile.edit', 'uses' => 'ProfileController@edit']);
+    Route::get('tetapan/profil', ['as' => 'sentinel.profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile', ['as' => 'sentinel.profile.update', 'uses' => 'ProfileController@update']);
+    Route::get('tetapan/katalaluan', ['as' => 'sentinel.profile.getPassword', 'uses' => 'ProfileController@showPassword']);
     Route::post('profile/password', ['as' => 'sentinel.profile.password', 'uses' => 'ProfileController@changePassword']);
+    
+    Route::get('tetapan/akaun', ['as' => 'sentinel.tetapan.akaun', 'uses' => 'TetapanController@akaun']);
 
     Route::group(['prefix' => 'pentadbir'], function() {
         // Sentinel Users
