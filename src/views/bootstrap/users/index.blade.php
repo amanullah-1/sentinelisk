@@ -7,14 +7,9 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <div class="panel-title">
-                    Senarai Pengguna
-                    <div class='btn-toolbar pull-right'>
-                        <div class='btn-group'>
-                            <a class='btn btn-primary' href="{{ route('sentinel.users.create') }}">Create User</a>
-                        </div>
-                    </div>
-                </div>                
+                <h3 class="panel-title pull-left">Senarai Pengguna</h3>
+                <button class='btn btn-primary pull-right' href="{{ route('sentinel.users.create') }}">Tambah Pengguna</button>
+                <div class="clearfix"></div>            
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
