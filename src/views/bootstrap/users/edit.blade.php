@@ -43,7 +43,7 @@
                     @if ($isProfileUpdate)
                         Anda
                     @else
-                        {{ $user->email }}
+                        {{ $user->nama }}
                     @endif
                 </h3>
             </div>
@@ -80,7 +80,7 @@
             <div class="panel-body">
                 <form method="POST" action="{{ route('sentinel.users.memberships', $user->hash) }}" accept-charset="UTF-8" class="form-horizontal" role="form">
                     <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
+                        <div class="col-sm-offset-3 col-sm-10">
                             @foreach($groups as $group)
                                 <label class="checkbox-inline">
                                     <input type="checkbox" name="groups[{{ $group->name }}]" value="1" {{ ($user->inGroup($group) ? 'checked' : '') }}> {{ $group->name }}
@@ -89,7 +89,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
+                        <div class="col-sm-offset-3 col-sm-10">
                             <input name="_token" value="{{ csrf_token() }}" type="hidden">
                             <input class="btn btn-primary" value="Update Memberships" type="submit">
                         </div>

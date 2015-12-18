@@ -8,7 +8,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title pull-left">Senarai Pengguna</h3>
-                <button class='btn btn-primary pull-right' href="{{ route('sentinel.users.create') }}">Tambah Pengguna</button>
+                <a class='btn btn-primary pull-right' href="{{ route('sentinel.users.create') }}">Tambah Pengguna</a>
                 <div class="clearfix"></div>            
             </div>
             <div class="panel-body">

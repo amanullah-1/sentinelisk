@@ -48,11 +48,17 @@
     		@if ($user->nama)
 		    	<h1><strong> {{ $user->nama }} </strong></h1>
 			@endif
-			<p>{{ $user->email }} &#8226; {{ $user->created_at->diffForHumans() }}</p>
+			<p>{{ $user->email }} &#8226; Pengguna semenjak {{ $user->created_at->diffForHumans() }}</p>
 			<hr />			
-			<h4>User Object</h4>
+			<h4>Sejarah Pengguna</h4>
 			<div>
-				<p>{{ var_dump($user) }}</p>
+				@foreach($user->revisionHistory->reverse() as $history)
+				  @if($history->key == 'nama' && !$history->old_value)
+				  @elseif($history->key == 'password')
+				        <li> {{ date('d/m/Y', strtotime($history->created_at)) }} - {{ $history->userResponsible()->nama }} mengemaskini katalaluan</li>
+				  @else
+				  @endif
+				@endforeach
 			</div>
     	</div>
     </div>

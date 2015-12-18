@@ -6,6 +6,8 @@
 |--------------------------------------------------------------------------
 */
 
+App::setLocale('ms');
+
 Route::group(['namespace' => 'Sentinel\Controllers'], function () {
 
     // Sentinel Session Routes
