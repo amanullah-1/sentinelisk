@@ -2,12 +2,15 @@
 
 namespace Sentinel\Controllers;
 
+use Illuminate\Http\Request;
+use Sentinel\Models\Pejabat;
 use Illuminate\Routing\Controller as BaseController;
 use Sentinel\Traits\SentinelViewfinderTrait;
+use Sentinel\Traits\SentinelRedirectionTrait;
 
 class PejabatController extends BaseController
 {
-
+    use SentinelRedirectionTrait;
     use SentinelViewfinderTrait;
 
     /**
@@ -20,22 +23,59 @@ class PejabatController extends BaseController
         $this->middleware('sentry.auth');
     }
 
-    public function show()
+    public function index()
     {
         // Grab the current user
-        $user = $this->userRepository->getUser();
+        $pejabats = Pejabat::paginate(10);
 
-        if (is_null($user->nama)) {
+        return $this->viewFinder('Sentinel::pejabat.index', ['pejabats' => $pejabats]);
+    }
 
-            // Get all available groups
-            $groups = $this->groupRepository->all();
+    public function create()
+    {
+        return $this->viewFinder('Sentinel::pejabat.create');
+    }
 
-            return $this->viewFinder('Sentinel::users.edit', [
-                'user' => $user,
-                'groups' => $groups
-            ]);
-        }
+    public function store(Request $request)
+    {
+        // Create and store the new user
+        Pejabat::create($request->all());
 
-        return $this->viewFinder('Sentinel::dashboard.show', ['user' => $user]);
+        // Determine response message based on whether or not the user was activated
+        $message = 'Pejabat telah disimpan';
+
+        // Finished!
+        return $this->redirectTo('pejabat_store', ['success' => $message]);
+    }
+
+    public function edit($id)
+    {
+        $pejabat = Pejabat::findOrFail($id);
+
+        return $this->viewFinder('Sentinel::pejabat.edit', ['pejabat' => $pejabat]);  
+    }
+
+    public function update(Request $request, $id)
+    {
+        $pejabat = Pejabat::findOrFail($id);
+
+        $input = $request->all();
+
+        $pejabat->fill($input)->save();
+
+        $message = 'Pejabat telah dikemaskini';
+
+        return $this->redirectTo('pejabat_store', ['success' => $message]);
+    }
+
+    public function destroy($id)
+    {
+        $pejabat = Pejabat::findOrFail($id);
+
+        $pejabat->delete();
+
+        $message = 'Pejabat telah dipadam';
+
+        return $this->redirectTo('pejabat_store', ['success' => $message]);
     }
 }
