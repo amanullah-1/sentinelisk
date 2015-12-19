@@ -54,9 +54,11 @@
 			<div>
 				@foreach($user->revisionHistory->reverse() as $history)
 				  @if($history->key == 'nama' && !$history->old_value)
+				  	<li>{{ $history->userResponsible()->nama }} mengemaskini {{ $history->fieldName() }} kepada {{ $history->newValue() }}</li>
 				  @elseif($history->key == 'password')
-				        <li> {{ date('d/m/Y', strtotime($history->created_at)) }} - {{ $history->userResponsible()->nama }} mengemaskini katalaluan</li>
+				        <li>{{ date('d/m/Y', strtotime($history->created_at)) }} - {{ $history->userResponsible()->nama }} mengemaskini katalaluan</li>
 				  @else
+				  	<li>{{ date('d/m/Y', strtotime($history->created_at)) }} - {{ $history->userResponsible()->nama }} mengemaskini {{ $history->fieldName() }} dari {{ $history->oldValue() }} kepada {{ $history->newValue() }}</li>
 				  @endif
 				@endforeach
 			</div>
