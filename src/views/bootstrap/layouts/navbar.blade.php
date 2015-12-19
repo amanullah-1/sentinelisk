@@ -24,6 +24,12 @@
 										<li {!! (Request::is('groups*') ? 'class="active"' : '') !!}><a href="{{ action('\\Sentinel\Controllers\GroupController@index') }}">Kumpulan Pengguna</a></li>
 									</ul>
 								</li>
+								<li class="dropdown-submenu">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pejabat</a>
+									<ul class="dropdown-menu">
+										<li {!! (Request::is('pejabat*') ? 'class="active"' : '') !!}><a href="{{ action('\\Sentinel\Controllers\PejabatController@index') }}">Senarai Pejabat</a></li>
+									</ul>
+								</li>
 							</ul>
 						</li>
 					@endif
