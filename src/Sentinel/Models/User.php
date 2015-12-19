@@ -7,6 +7,8 @@ use Illuminate\Contracts\Auth\Authenticatable as UserContract;
 
 class User extends \Cartalyst\Sentry\Users\Eloquent\User implements UserContract
 {
+    use \Venturecraft\Revisionable\RevisionableTrait;
+    
     /**
      * Set the Sentry User Model Hasher to be the same as the configured Sentry Hasher
      */
