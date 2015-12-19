@@ -15,8 +15,11 @@
            	<div class="table-responsive">
                     <table class="table table-striped table-hover">
                         <thead>
+                        <th>#</th>
+                        <th>Jenis Pejabat</th>
                         <th>Nama</th>
-                        <th>Email</th>
+                        <th>Negeri</th>
+                        <th>&nbsp;</th>
                         </thead>
                         <tbody>
                         <?php $page = isset($_GET['page']) ? $_GET['page'] :1 ?>
@@ -24,9 +27,9 @@
                         @forelse ($pejabats as $pejabat)
                             <tr>
 										<th>{{ $count }}</th>
-										<td><div>{{ $pejabat->jenis_pejabat }}</div></td>
-										<td><div> {{ $pejabat->negeri }}</div></td>
+										<td><div>{{ $pejabat->jenis_pejabat }}</div></td>										
 										<td class="table-text"><div><a href="/pentadbir/pejabat/{{ $pejabat->id }}/edit">{{ $pejabat->nama }}</a></div></td>
+                                    <td><div> {{ $pejabat->negeri }}</div></td>
 
 										<!-- Task Delete Button -->
 										<td>
