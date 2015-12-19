@@ -43,9 +43,9 @@
 		<ul>
 			@foreach($pejabat->revisionHistory as $history)
 			@if($history->key == 'created_at' && !$history->old_value)
-			<li>{{ $history->userResponsible()->name }} mencipta pejabat ini pada {{ $history->newValue() }}</li>
+			<li>{{ $history->userResponsible()->nama }} mencipta pejabat ini pada {{ $history->newValue() }}</li>
 			@else
-			<li>{{ $history->userResponsible()->name }} mengemaskini {{ $history->fieldName() }} dari {{ $history->oldValue() }} kepada {{ $history->newValue() }}</li>
+			<li>{{ $history->userResponsible()->nama }} mengemaskini {{ $history->fieldName() }} dari {{ $history->oldValue() }} kepada {{ $history->newValue() }}</li>
 			@endif
 			@endforeach
 		</ul>
