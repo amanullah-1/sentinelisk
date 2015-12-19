@@ -9,6 +9,16 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User implements UserContract
 {
     use \Venturecraft\Revisionable\RevisionableTrait;
     
+    protected $dontKeepRevisionOf = array(
+        'persist_code',
+        'last_login',
+        'activation_code',
+        'activated',
+        'activated_at',
+        'password',
+        'reset_password_code'
+    );
+    
     /**
      * Set the Sentry User Model Hasher to be the same as the configured Sentry Hasher
      */
