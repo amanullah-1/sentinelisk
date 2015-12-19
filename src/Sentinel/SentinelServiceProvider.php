@@ -77,10 +77,15 @@ class SentinelServiceProvider extends ServiceProvider
        // Register the Vinkla/Hashids Service Provider
         $this->app->register('Vinkla\Hashids\HashidsServiceProvider');
 
+        // Register the Vinkla/Hashids Service Provider
+        $this->app->register('Illuminate\Html\HtmlServiceProvider');
+
         // Load the Sentry and Hashid Facade Aliases
         $loader = AliasLoader::getInstance();
         $loader->alias('Sentry', 'Cartalyst\Sentry\Facades\Laravel\Sentry');
         $loader->alias('Hashids', 'Vinkla\Hashids\Facades\Hashids');
+        $loader->alias('Html', 'Illuminate\Html\HtmlFacade');
+        $loader->alias('Form', 'Illuminate\Html\FormFacade');
 
 
         // Bind the User Repository
