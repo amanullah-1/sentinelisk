@@ -141,6 +141,8 @@ return [
         'groups_destroy'               => ['route' => 'sentinel.groups.index'],
         'profile_change_password'      => ['route' => 'sentinel.profile.show'],
         'profile_update'               => ['route' => 'sentinel.profile.show'],
+
+        'pejabat_store'                  => ['route' => 'sentinel.pejabat.index'],
     ],
 
     /*

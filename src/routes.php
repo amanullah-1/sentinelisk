@@ -64,5 +64,14 @@ Route::group(['namespace' => 'Sentinel\Controllers'], function () {
         Route::get('groups/{hash}/edit', ['as' => 'sentinel.groups.edit', 'uses' => 'GroupController@edit']);
         Route::put('groups/{hash}', ['as' => 'sentinel.groups.update', 'uses' => 'GroupController@update']);
         Route::delete('groups/{hash}', ['as' => 'sentinel.groups.destroy', 'uses' => 'GroupController@destroy']);
+
+        // Sentinel Pejabat
+        Route::get('pejabat', ['as' => 'sentinel.pejabat.index', 'uses' => 'PejabatController@index']);
+        Route::get('pejabat/create', ['as' => 'sentinel.pejabat.create', 'uses' => 'PejabatController@create']);
+        Route::post('pejabat', ['as' => 'sentinel.pejabat.store', 'uses' => 'PejabatController@store']);
+        Route::get('pejabat/{hash}', ['as' => 'sentinel.pejabat.show', 'uses' => 'PejabatController@show']);
+        Route::get('pejabat/{hash}/edit', ['as' => 'sentinel.pejabat.edit', 'uses' => 'PejabatController@edit']);
+        Route::put('pejabat/{hash}', ['as' => 'sentinel.pejabat.update', 'uses' => 'PejabatController@update']);
+        Route::delete('pejabat/{hash}', ['as' => 'sentinel.pejabat.destroy', 'uses' => 'PejabatController@destroy']);
     });
 });
