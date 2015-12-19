@@ -7,7 +7,7 @@
     <div class="col-md-12">
     	<div class="panel panel-default">
            <div class="panel-heading">
-               <h3 class="panel-title pull-left" style="margin-top:10px;">Tambah Pejabat</h3>
+               <h3 class="panel-title pull-left" style="padding-top:0px;">Tambah Pejabat</h3>
                <div class="clearfix"></div>
            </div>
            <div class="panel-body">
