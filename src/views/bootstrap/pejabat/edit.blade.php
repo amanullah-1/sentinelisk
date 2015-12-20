@@ -1,11 +1,14 @@
 @extends(config('sentinel.layout'))
 
+@section('title', 'Kemaskini Pejabat')
+
 @section('content')
-<div class="container">
+<div class="row">
 	<div class="col-sm-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				Kemaskini Pejabat
+				<h3 class="panel-title pull-left" style="padding-top:0px;">Kemaskini Pejabat</h3>
+               <div class="clearfix"></div>
 			</div>
 			<div class="panel-body">
 				{!! Form::model($pejabat, array('route' => array('sentinel.pejabat.update', $pejabat->id), 'method' => 'PUT', 'class' => 'form-horizontal')) !!}
@@ -38,10 +41,9 @@
 			</div>
 		</div>
 	</div>
-		<div class="row">
-		<div class="col-sm-12">
+	<div class="col-sm-12">
 		<ul>
-			@foreach($pejabat->revisionHistory as $history)
+			@foreach($pejabat->revisionHistory->reverse() as $history)
 			@if($history->key == 'created_at' && !$history->old_value)
 			<li>{{ $history->userResponsible()->nama }} mencipta pejabat ini pada {{ $history->newValue() }}</li>
 			@else
@@ -49,7 +51,6 @@
 			@endif
 			@endforeach
 		</ul>
-		</div>
 	</div>
 </div>
 @endsection
