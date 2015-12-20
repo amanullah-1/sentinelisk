@@ -2,8 +2,10 @@
 
 namespace Sentinel\Controllers;
 
+use Sentinel\FormRequests\PejabatRequest;
 use Illuminate\Http\Request;
 use Sentinel\Models\Pejabat;
+use Sentinel\Models\Negeri;
 use Illuminate\Routing\Controller as BaseController;
 use Sentinel\Traits\SentinelViewfinderTrait;
 use Sentinel\Traits\SentinelRedirectionTrait;
@@ -33,10 +35,11 @@ class PejabatController extends BaseController
 
     public function create()
     {
-        return $this->viewFinder('Sentinel::pejabat.create');
+        $negeriList = ['' => 'Sila pilih...'] + Negeri::lists('nama', 'nama')->toarray();
+        return $this->viewFinder('Sentinel::pejabat.create', ['negeriList' => $negeriList]);
     }
 
-    public function store(Request $request)
+    public function store(PejabatRequest $request)
     {
         // Create and store the new user
         Pejabat::create($request->all());
